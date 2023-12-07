@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LoremIpsum } from 'lorem-ipsum';
 import { Item } from '../models/item.model';
@@ -16,6 +16,7 @@ import {IconComponent} from "../icon/icon.component";
 	styleUrls: ['./main-page.component.scss'],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.ShadowDom,
 	imports: [
 		NgForOf, ItemComponent, IconComponent
 	]
