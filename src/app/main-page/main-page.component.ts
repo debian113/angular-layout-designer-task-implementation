@@ -4,12 +4,21 @@ import { LoremIpsum } from 'lorem-ipsum';
 import { Item } from '../models/item.model';
 import { Statuses } from '../consts/statuses.enum';
 import { Icons } from '../consts/icons.enum';
+import {NgForOf} from "@angular/common";
+import {ItemComponent} from "../item/item.component";
+import {BrowserModule} from "@angular/platform-browser";
+import {ReactiveFormsModule} from "@angular/forms";
+import {IconComponent} from "../icon/icon.component";
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './main-page.component.html',
 	styleUrls: ['./main-page.component.scss'],
+	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	imports: [
+		NgForOf, ItemComponent, IconComponent
+	]
 })
 export class MainPageComponent {
 	public items: Item[] = [];
