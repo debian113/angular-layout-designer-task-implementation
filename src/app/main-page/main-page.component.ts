@@ -16,7 +16,6 @@ import {IconComponent} from "../icon/icon.component";
 	styleUrls: ['./main-page.component.scss'],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	encapsulation: ViewEncapsulation.ShadowDom,
 	imports: [
 		NgForOf, ItemComponent, IconComponent
 	]

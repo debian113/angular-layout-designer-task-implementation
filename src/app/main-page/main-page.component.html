@@ -1,11 +1,11 @@
 <section class="header">
 	<h1>Items store</h1>
-	<button (click)="addItem()">Add item</button>
-	<button (click)="print()">Print</button>
+	<button class="button" (click)="addItem()">Add item</button>
+	<button class="button" (click)="print()">Print</button>
 	<div>
 		Selected: {{ selected.size }}
 
-		<button (click)="deleteSelected()">
+		<button class="button"  (click)="deleteSelected()">
 			<app-icon [icon]="Icons.trash"></app-icon>
 			Delete
 		</button>

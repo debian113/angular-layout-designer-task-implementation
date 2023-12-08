@@ -21,7 +21,7 @@ import {IconComponent} from "../icon/icon.component";
 	templateUrl: './item.component.html',
 	styleUrls: ['./item.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	encapsulation: ViewEncapsulation.ShadowDom,
+
 	standalone: true,
 	imports: [
 		ReactiveFormsModule,
