@@ -13,4 +13,9 @@ body {
    div {
 		padding: 1em;
    }
+	app-item:nth-child(even) {
+		div {
+			background: #F6F6F6;
+		}
+	}
 }
