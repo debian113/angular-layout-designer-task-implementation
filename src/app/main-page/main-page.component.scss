@@ -17,6 +17,10 @@
 	div {
 		padding: 1em;
 	}
+
+	app-item + div {
+		display: none;
+	}
 }
 
 
@@ -25,9 +29,9 @@
 .button {
 	width: 13rem;
 	height: 3rem;
-	border: none;
+	border: 2px solid black;
 	outline: none;
-	color: #fff;
+	color: black;
 	background: #111;
 	cursor: pointer;
 	position: relative;
@@ -72,7 +76,7 @@
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		background: lightblue;
+		background: white;
 		left: 0;
 		top: 0;
 		border-radius: 10px;
