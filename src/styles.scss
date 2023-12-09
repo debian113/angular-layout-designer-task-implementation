@@ -10,19 +10,24 @@ body {
 }
 
 .grid {
-   div:not(.empty-item){
+	&__header-item {
 		padding: 1em;
 	    border-bottom:2px solid #F6F6F6;
    }
+
+	&__body-item {
+		padding: 1em;
+	}
+
 	app-item:nth-child(even) {
-		div {
+		.grid__body-item {
 			background: #F6F6F6;
 			border-bottom:2px solid #F6F6F6;
 		}
 	}
 
 	&__header-item_inactive {
-		div {
+		.grid__body-item  {
 			filter: grayscale(70%);
 		}
 	}

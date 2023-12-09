@@ -10,10 +10,11 @@ import {
 } from '@angular/core';
 import { Icons } from '../consts/icons.enum';
 import { Item } from '../models/item.model';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import {NgOptimizedImage} from "@angular/common";
-import {IconComponent} from "../icon/icon.component";
+import { NgOptimizedImage } from "@angular/common";
+import { IconComponent } from "../icon/icon.component";
+import { ReadMoreComponent } from "../read-more/read-more.component";
 
 
 @Component({
@@ -26,7 +27,8 @@ import {IconComponent} from "../icon/icon.component";
 	imports: [
 		ReactiveFormsModule,
 		NgOptimizedImage,
-		IconComponent
+		IconComponent,
+		ReadMoreComponent
 	]
 })
 export class ItemComponent implements OnDestroy, OnInit {
