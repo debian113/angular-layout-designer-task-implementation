@@ -3,6 +3,6 @@
 <div>{{ item.label }}</div>
 <div>{{ item.status }}</div>
 <div>{{ item.description }}</div>
-<div>
+<div class="item__delete-block">
 	<app-icon (click)="killMe.emit()" [icon]="Icons.trash"></app-icon>
 </div>

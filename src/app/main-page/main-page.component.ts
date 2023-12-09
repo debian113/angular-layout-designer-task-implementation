@@ -7,7 +7,7 @@ import { Icons } from '../consts/icons.enum';
 import {NgForOf} from "@angular/common";
 import {ItemComponent} from "../item/item.component";
 import {BrowserModule} from "@angular/platform-browser";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {IconComponent} from "../icon/icon.component";
 
 @Component({
@@ -17,13 +17,13 @@ import {IconComponent} from "../icon/icon.component";
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [
-		NgForOf, ItemComponent, IconComponent
+		NgForOf, ItemComponent, IconComponent, FormsModule
 	]
 })
 export class MainPageComponent {
 	public items: Item[] = [];
 
-	public selected = new Set<symbol>();
+	public selected : Set<symbol> = new Set<symbol>();
 
 	public Icons = Icons;
 
@@ -38,7 +38,7 @@ export class MainPageComponent {
 		},
 	});
 
-	public addItem() {
+	public addItem(): void {
 		const item: Item = {
 			id: Symbol(),
 			label: this.lorem.generateWords(this.randomWordsQty),
@@ -50,7 +50,7 @@ export class MainPageComponent {
 		this.items.unshift(item);
 	}
 
-	public checkItem(isChecked: boolean, id: symbol) {
+	public checkItem(isChecked: boolean, id: symbol): void {
 		if (isChecked) {
 			this.selected.add(id);
 		} else {
@@ -58,13 +58,17 @@ export class MainPageComponent {
 		}
 	}
 
-	public deleteSelected() {
+	public selectAllItems(): void {
+		this.items.forEach(item => this.selected.add(item.id))
+	}
+
+	public deleteSelected(): void {
 		Array.from(this.selected).forEach((itemId) => {
 			this.deleteById(itemId);
 		});
 	}
 
-	public deleteById(id: symbol) {
+	public deleteById(id: symbol): void {
 		const doomedIndex = this.items.findIndex((item) => item.id === id);
 
 		this.items.splice(doomedIndex, 1);

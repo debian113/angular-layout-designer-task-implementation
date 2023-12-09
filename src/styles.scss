@@ -10,7 +10,7 @@ body {
 }
 
 .grid {
-   div {
+   div:not(.empty-item){
 		padding: 1em;
 	    border-bottom:2px solid #F6F6F6;
    }

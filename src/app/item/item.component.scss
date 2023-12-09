@@ -6,3 +6,10 @@ img {
 	max-width: 5rem;
 	max-height: 5rem;
 }
+
+.item {
+	&__delete-block {
+		color: red;
+		cursor: pointer;
+	}
+}

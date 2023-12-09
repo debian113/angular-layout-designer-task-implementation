@@ -41,9 +41,11 @@ export class ItemComponent implements OnDestroy, OnInit {
 
 	public Icons = Icons;
 
-	public checkbox = new FormControl();
+	public checkbox: FormControl<boolean> = new FormControl();
 
 	private checkSubscription!: Subscription;
+
+
 
 	ngOnInit(): void {
 		this.checkSubscription = this.checkbox.valueChanges.subscribe(
@@ -51,6 +53,10 @@ export class ItemComponent implements OnDestroy, OnInit {
 				this.isChecked.emit(isChecked);
 			}
 		);
+	}
+
+	setCheckboxValue(value: boolean): void {
+		this.checkbox.setValue(value)
 	}
 
 	ngOnDestroy(): void {
