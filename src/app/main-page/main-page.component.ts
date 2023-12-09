@@ -4,7 +4,7 @@ import { LoremIpsum } from 'lorem-ipsum';
 import { Item } from '../models/item.model';
 import { Statuses } from '../consts/statuses.enum';
 import { Icons } from '../consts/icons.enum';
-import {NgForOf} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
 import {ItemComponent} from "../item/item.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -17,11 +17,13 @@ import {IconComponent} from "../icon/icon.component";
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [
-		NgForOf, ItemComponent, IconComponent, FormsModule
+		NgForOf, ItemComponent, IconComponent, FormsModule, NgClass
 	]
 })
 export class MainPageComponent {
 	@ViewChildren(ItemComponent) itemComponents: QueryList<ItemComponent> | undefined;
+
+	public Statuses = Statuses;
 
 	public items: Item[] = [];
 

@@ -20,4 +20,10 @@ body {
 			border-bottom:2px solid #F6F6F6;
 		}
 	}
+
+	&__header-item_inactive {
+		div {
+			filter: grayscale(70%);
+		}
+	}
 }

@@ -21,6 +21,7 @@
 	<app-item
 		*ngFor="let item of items"
 		[item]="item"
+		[ngClass]="{'grid__header-item_inactive': item.status === Statuses.inactive}"
 		(isChecked)="checkItem($event, item.id)"
 		(killMe)="deleteById(item.id)"
 	></app-item>
