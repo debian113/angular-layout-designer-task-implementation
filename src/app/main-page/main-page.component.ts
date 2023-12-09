@@ -78,7 +78,7 @@ export class MainPageComponent {
 		Array.from(this.selected).forEach((itemId) => {
 			this.deleteById(itemId);
 		});
-		
+
 		this.selectAllCheckbox = false;
 	}
 
