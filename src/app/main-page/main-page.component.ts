@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LoremIpsum } from 'lorem-ipsum';
 import { Item } from '../models/item.model';
@@ -21,11 +21,15 @@ import {IconComponent} from "../icon/icon.component";
 	]
 })
 export class MainPageComponent {
+	@ViewChildren(ItemComponent) itemComponents: QueryList<ItemComponent> | undefined;
+
 	public items: Item[] = [];
 
 	public selected : Set<symbol> = new Set<symbol>();
 
 	public Icons = Icons;
+
+	public selectAllCheckbox: boolean = false;
 
 	private lorem = new LoremIpsum({
 		sentencesPerParagraph: {
@@ -48,6 +52,8 @@ export class MainPageComponent {
 		};
 
 		this.items.unshift(item);
+
+		this.selectAllCheckbox = false;
 	}
 
 	public checkItem(isChecked: boolean, id: symbol): void {
@@ -59,13 +65,21 @@ export class MainPageComponent {
 	}
 
 	public selectAllItems(): void {
-		this.items.forEach(item => this.selected.add(item.id))
+		if (!this.selectAllCheckbox) {
+			this.selected.clear();
+			this.itemComponents!.forEach(child => child.setCheckboxValue(false));
+		} else {
+			this.items.forEach(item => this.selected.add(item.id))
+			this.itemComponents!.forEach(child => child.setCheckboxValue(true));
+		}
 	}
 
 	public deleteSelected(): void {
 		Array.from(this.selected).forEach((itemId) => {
 			this.deleteById(itemId);
 		});
+		
+		this.selectAllCheckbox = false;
 	}
 
 	public deleteById(id: symbol): void {
