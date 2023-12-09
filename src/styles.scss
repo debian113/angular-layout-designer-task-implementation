@@ -12,10 +12,12 @@ body {
 .grid {
    div {
 		padding: 1em;
+	    border-bottom:2px solid #F6F6F6;
    }
 	app-item:nth-child(even) {
 		div {
 			background: #F6F6F6;
+			border-bottom:2px solid #F6F6F6;
 		}
 	}
 }
