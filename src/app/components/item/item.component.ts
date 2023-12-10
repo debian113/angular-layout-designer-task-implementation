@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 import { NgOptimizedImage } from "@angular/common";
 import { IconComponent } from "../icon/icon.component";
 import { ReadMoreComponent } from "../read-more/read-more.component";
+import { bounceInDownAnimation } from "../../animations/bounce-in-down.animation";
 
 
 @Component({
@@ -22,7 +23,7 @@ import { ReadMoreComponent } from "../read-more/read-more.component";
 	templateUrl: './item.component.html',
 	styleUrls: ['./item.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-
+	animations:[bounceInDownAnimation()],
 	standalone: true,
 	imports: [
 		ReactiveFormsModule,
