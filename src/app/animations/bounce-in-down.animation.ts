@@ -45,6 +45,15 @@ const bounceInDown = () =>
 		])
 	);
 
+function animateChildren(): AnimationMetadata[] {
+	const queryBefore = query('@*', animateChild(), { optional: true });
+	const queryTogether = query('@*', animateChild(), { optional: true });
+	const queryAfter = query('@*', animateChild(), { optional: true });
+
+	return [ ...(queryBefore ? [queryBefore] : []), group([useAnimation(bounceInDown()),
+		...(queryTogether ? [queryTogether] : [])]), ...(queryAfter ? [queryAfter] : []) ];
+}
+
 export function bounceInDownAnimation(
 ): AnimationTriggerMetadata {
 	return trigger('bounceInDown', [
@@ -57,11 +66,4 @@ export function bounceInDownAnimation(
 	]);
 }
 
-function animateChildren(): AnimationMetadata[] {
-	const queryBefore = query('@*', animateChild(), { optional: true });
-	const queryTogether = query('@*', animateChild(), { optional: true });
-	const queryAfter = query('@*', animateChild(), { optional: true });
 
-	return [ ...(queryBefore ? [queryBefore] : []), group([useAnimation(bounceInDown()),
-		...(queryTogether ? [queryTogether] : [])]), ...(queryAfter ? [queryAfter] : []) ];
-}

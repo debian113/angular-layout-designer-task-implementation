@@ -1,5 +1,6 @@
 import {
 	ChangeDetectionStrategy,
+	ChangeDetectorRef,
 	Component,
 	EventEmitter,
 	Input,
@@ -16,6 +17,7 @@ import { NgOptimizedImage } from "@angular/common";
 import { IconComponent } from "../icon/icon.component";
 import { ReadMoreComponent } from "../read-more/read-more.component";
 import { bounceInDownAnimation } from "../../animations/bounce-in-down.animation";
+import { bounceOutUpAnimation } from "../../animations/bounce-in-up.animation";
 
 
 @Component({
@@ -23,7 +25,7 @@ import { bounceInDownAnimation } from "../../animations/bounce-in-down.animation
 	templateUrl: './item.component.html',
 	styleUrls: ['./item.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	animations:[bounceInDownAnimation()],
+	animations:[bounceInDownAnimation(), bounceOutUpAnimation()],
 	standalone: true,
 	imports: [
 		ReactiveFormsModule,
@@ -48,7 +50,10 @@ export class ItemComponent implements OnDestroy, OnInit {
 
 	private checkSubscription!: Subscription;
 
+	isDestroyed = 'false';
 
+	constructor(private cd: ChangeDetectorRef) {
+	}
 
 	ngOnInit(): void {
 		this.checkSubscription = this.checkbox.valueChanges.subscribe(
@@ -56,6 +61,15 @@ export class ItemComponent implements OnDestroy, OnInit {
 				this.isChecked.emit(isChecked);
 			}
 		);
+	}
+
+	destroyCurrentItem(){
+		this.isDestroyed = 'true';
+		this.cd.detectChanges();
+		
+		setTimeout(()=>{
+			this.killMe.emit()
+		},1000)
 	}
 
 	setCheckboxValue(value: boolean): void {
