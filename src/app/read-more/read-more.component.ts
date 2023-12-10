@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges } from '@angular/core';
+import {
+	AfterViewInit,
+	ChangeDetectionStrategy, ChangeDetectorRef,
+	Component,
+	ElementRef,
+	Input,
+	OnChanges, Renderer2, SimpleChanges,
+	ViewChild
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,37 +17,63 @@ import { CommonModule } from '@angular/common';
   templateUrl: './read-more.component.html',
   styleUrls: ['./read-more.component.scss']
 })
-export class ReadMoreComponent implements OnChanges {
-	@Input() text: string | undefined;
-	@Input() maxLength: number = 100;
-	currentText: string | undefined;
+export class ReadMoreComponent implements OnChanges, AfterViewInit {
+	@ViewChild('text') elementRef: ElementRef | undefined;
+
+	@Input() currentText: string | undefined;
+	@Input() maxLines: number = 2;
+
 	hideToggle: boolean = true;
 
 	public isCollapsed: boolean = true;
 
-	constructor(private elementRef: ElementRef) {
-
+	constructor(private renderer: Renderer2 , private cd: ChangeDetectorRef) {
 	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		if (changes['maxLength'] && changes['maxLength'].currentValue) {
+			this.applyEllipsis();
+		}
+	}
+
+	ngAfterViewInit(): void {
+		this.applyEllipsis();
+	}
+
 	toggleView() {
 		this.isCollapsed = !this.isCollapsed;
-		this.determineView();
-	}
-	determineView() {
-		if (!this.text || this.text.length <= this.maxLength) {
-			this.currentText = this.text;
-			this.isCollapsed = false;
-			this.hideToggle = true;
-			return;
-		}
-		this.hideToggle = false;
+
 		if (this.isCollapsed) {
-			this.currentText = this.text.substring(0, this.maxLength) + "...";
-		} else if(!this.isCollapsed)  {
-			this.currentText = this.text;
+			this.applyEllipsis();
+		} else {
+			this.removeStyle();
+		}
+	}
+	private applyEllipsis(): void {
+		const element = this.elementRef?.nativeElement;
+
+		if (element) {
+			this.renderer.setStyle(element, 'display', '-webkit-box');
+			this.renderer.setStyle(element, '-webkit-box-orient', 'vertical');
+			this.renderer.setStyle(element, 'overflow', 'hidden');
+			this.renderer.setStyle(element, 'text-overflow', 'ellipsis');
+			this.renderer.setStyle(element, '-webkit-line-clamp', `${this.maxLines}`);
 		}
 
+		this.cd.detectChanges();
 	}
-	ngOnChanges() {
-		this.determineView();
+
+	private removeStyle(): void {
+		const element = this.elementRef?.nativeElement;
+
+		if (element) {
+			this.renderer.setStyle(element, 'display', 'unset');
+			this.renderer.setStyle(element, '-webkit-box-orient', 'unset');
+			this.renderer.setStyle(element, 'overflow', 'unset');
+			this.renderer.setStyle(element, 'text-overflow', 'unset');
+			this.renderer.setStyle(element, '-webkit-line-clamp', 'unset');
+		}
+
+		this.cd.detectChanges();
 	}
 }

@@ -2,7 +2,7 @@
 <div class="grid__body-item"><img [src]="item.foto" /></div>
 <div class="grid__body-item">{{ item.label }}</div>
 <div class="grid__body-item">{{ item.status }}</div>
-<div class="grid__body-item"><app-read-more [text]="item.description"></app-read-more></div>
+<div class="grid__body-item"><app-read-more [currentText]="item.description"></app-read-more></div>
 <div class="grid__body-item item__delete-block">
 	<app-icon (click)="killMe.emit()" [icon]="Icons.trash"></app-icon>
 </div>

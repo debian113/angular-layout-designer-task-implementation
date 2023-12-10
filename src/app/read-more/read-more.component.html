@@ -1,3 +1,6 @@
-<div [innerHTML]="currentText">
+<div #text class="read-more__text" [innerHTML]="currentText">
 </div>
-<a class="read-more__link" [class.hidden]="hideToggle" (click)="toggleView()">Read {{isCollapsed? 'more':'less'}}</a>
+<a class="read-more__link"
+   [class.hidden]="hideToggle"
+   (click)="toggleView()">Read {{isCollapsed? 'more':'less'}}
+</a>
