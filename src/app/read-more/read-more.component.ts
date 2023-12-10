@@ -21,9 +21,10 @@ export class ReadMoreComponent implements OnChanges, AfterViewInit {
 	@ViewChild('text') elementRef: ElementRef | undefined;
 
 	@Input() currentText: string | undefined;
-	@Input() maxLines: number = 2;
+	@Input() maxLines: number = 10;
 
 	hideToggle: boolean = true;
+	isTextTruncated: boolean = true;
 
 	public isCollapsed: boolean = true;
 
@@ -33,11 +34,16 @@ export class ReadMoreComponent implements OnChanges, AfterViewInit {
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['maxLength'] && changes['maxLength'].currentValue) {
 			this.applyEllipsis();
+			this.cd.detectChanges();
 		}
 	}
 
 	ngAfterViewInit(): void {
 		this.applyEllipsis();
+
+		this.isTextTruncated =this.elementRef?.nativeElement.scrollHeight > this.elementRef?.nativeElement.clientHeight;
+
+		this.cd.detectChanges();
 	}
 
 	toggleView() {
@@ -48,6 +54,8 @@ export class ReadMoreComponent implements OnChanges, AfterViewInit {
 		} else {
 			this.removeStyle();
 		}
+
+		this.cd.detectChanges();
 	}
 	private applyEllipsis(): void {
 		const element = this.elementRef?.nativeElement;
@@ -59,8 +67,6 @@ export class ReadMoreComponent implements OnChanges, AfterViewInit {
 			this.renderer.setStyle(element, 'text-overflow', 'ellipsis');
 			this.renderer.setStyle(element, '-webkit-line-clamp', `${this.maxLines}`);
 		}
-
-		this.cd.detectChanges();
 	}
 
 	private removeStyle(): void {
@@ -73,7 +79,5 @@ export class ReadMoreComponent implements OnChanges, AfterViewInit {
 			this.renderer.setStyle(element, 'text-overflow', 'unset');
 			this.renderer.setStyle(element, '-webkit-line-clamp', 'unset');
 		}
-
-		this.cd.detectChanges();
 	}
 }
