@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
 import { LoremIpsum } from 'lorem-ipsum';
-import { Item } from '../models/item.model';
-import { Statuses } from '../consts/statuses.enum';
-import { Icons } from '../consts/icons.enum';
+import { Item } from '../../models/item.model';
+import { Statuses } from '../../consts/statuses.enum';
+import { Icons } from '../../consts/icons.enum';
 import { NgClass, NgForOf } from "@angular/common";
 import { ItemComponent } from "../item/item.component";
 import { FormsModule } from "@angular/forms";

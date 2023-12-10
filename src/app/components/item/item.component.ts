@@ -8,8 +8,8 @@ import {
 	Output,
 	ViewEncapsulation,
 } from '@angular/core';
-import { Icons } from '../consts/icons.enum';
-import { Item } from '../models/item.model';
+import { Icons } from '../../consts/icons.enum';
+import { Item } from '../../models/item.model';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NgOptimizedImage } from "@angular/common";
