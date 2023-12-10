@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { LoremIpsum } from 'lorem-ipsum';
 import { Item } from '../models/item.model';
 import { Statuses } from '../consts/statuses.enum';
