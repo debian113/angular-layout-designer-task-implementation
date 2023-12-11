@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/assets/scss/mixins/mobile";
+
 
 html {
 	font-size: 16px;
@@ -29,6 +31,12 @@ body {
 	&__header-item_inactive {
 		.grid__body-item  {
 			filter: grayscale(70%);
+		}
+	}
+
+	@include mobile {
+		&__header-item {
+			display: none;
 		}
 	}
 }

@@ -1,3 +1,5 @@
+@import "src/assets/scss/mixins/mobile";
+
 :host {
 	display: contents;
 }
@@ -11,5 +13,39 @@ img {
 	&__delete-block {
 		color: red;
 		cursor: pointer;
+	}
+}
+
+@include mobile {
+	.item-first{
+		display: none;
+	}
+
+	.item-second {
+		grid-area: second-el;
+	}
+
+	.item-third {
+		grid-area: third-el;
+	}
+
+	.item-fourth {
+		grid-area: fourth-el;
+	}
+
+	.item-fifth {
+		grid-area: fifth-el;
+	}
+
+	.item__delete-block {
+		grid-area: delete-block ;
+	}
+
+	:host {
+		display: grid;
+		grid-template-areas:
+		"second-el third-el"
+		"second-el fourth-el"
+		"delete-block fifth-el"
 	}
 }
