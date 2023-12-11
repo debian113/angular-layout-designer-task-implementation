@@ -1,9 +1,9 @@
 <section class="header">
 	<h1>Items store</h1>
 	<input type="text" placeholder="Search" class="search-input">
-	<button class="button" (click)="addItem()">Add item</button>
-	<button class="button" (click)="print()">Print</button>
-	<button class="button"  (click)="deleteSelected()">
+	<button class="button button__add-item" (click)="addItem()">Add item</button>
+	<button class="button button__print" (click)="print()">Print</button>
+	<button class="button button__delete-selected"  (click)="deleteSelected()">
 		<app-icon [icon]="Icons.trash"></app-icon>
 		Delete selected: {{ selected.size }}
 	</button>
@@ -32,3 +32,13 @@
 		Empty list
 	</div>
 </section>
+
+<div class="burger-menu">
+	<input type="checkbox" checked=checked id="toggle">
+	<label for="toggle" class="burger-icon">&#9776;</label>
+	<ul class="menu">
+		<li><a (click)="addItem()" href="#">Add item</a></li>
+		<li><a (click)="print()" href="#">Print</a></li>
+		<li><a (click)="deleteSelected()" href="#">Delete selected: {{ selected.size }}</a></li>
+	</ul>
+</div>

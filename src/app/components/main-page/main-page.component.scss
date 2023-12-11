@@ -118,3 +118,78 @@
 	padding: 5px;
 	border-radius: 5px;
 }
+
+.burger-menu {
+	display: none;
+}
+
+
+@include mobile {
+	.button__add-item {
+		display: none;
+	}
+
+	.button__print {
+		display: none;
+	}
+
+	.button__delete-selected {
+		display: none;
+	}
+
+	.burger-menu {
+		display: block;
+	}
+
+	.burger-menu {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background-color: #333;
+		padding: 10px;
+		text-align: center;
+	}
+
+	.burger-icon {
+		color: #fff;
+		font-size: 24px;
+		cursor: pointer;
+	}
+
+
+	.menu {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.menu li {
+		display: inline-block;
+	}
+
+	.menu a {
+		text-decoration: none;
+		color: #fff;
+		padding: 10px;
+		display: block;
+	}
+
+	/* Стили для чекбокса и скрытия меню */
+	#toggle {
+		display: none;
+	}
+
+	/* Показ меню при активации чекбокса */
+	#toggle:checked + .burger-icon + .menu {
+		display: flex ;
+		flex-direction: column;
+		position: absolute;
+		background-color: #333;
+		width: 100%;
+	}
+}
+
+

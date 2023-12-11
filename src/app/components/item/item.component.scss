@@ -18,7 +18,10 @@ img {
 
 @include mobile {
 	.item-first{
-		display: none;
+		grid-area: first-el;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.item-second {
@@ -38,13 +41,16 @@ img {
 	}
 
 	.item__delete-block {
-		grid-area: delete-block ;
+		grid-area: delete-block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	:host {
 		display: grid;
 		grid-template-areas:
-		"second-el third-el"
+		"first-el third-el"
 		"second-el fourth-el"
 		"delete-block fifth-el"
 	}
