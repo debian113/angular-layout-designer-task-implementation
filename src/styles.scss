@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/assets/scss/mixins/mobile";
+@import "src/assets/scss/mixins/variables";
 
 html {
 	font-size: 16px;
@@ -6,4 +8,43 @@ html {
 
 body {
 	font-family: sans-serif;
+	padding: 2rem;
+	background-color: var(--background-color);
+}
+
+.grid {
+	&__header-item {
+		padding: 1em;
+		border-bottom: 2px solid #f6f6f6;
+	}
+
+	&__body-item {
+		padding: 1em;
+	}
+
+	app-item {
+		&:hover div {
+			background-color: #e0e0e0 !important;
+			color: white !important;
+		}
+	}
+
+	app-item:nth-child(even) {
+		.grid__body-item {
+			background: #f6f6f6;
+			border-bottom: 2px solid #f6f6f6;
+		}
+	}
+
+	&__header-item_inactive {
+		.grid__body-item {
+			filter: grayscale(70%);
+		}
+	}
+
+	@include mobile {
+		&__header-item {
+			display: none;
+		}
+	}
 }

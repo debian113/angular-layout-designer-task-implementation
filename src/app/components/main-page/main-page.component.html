@@ -1,0 +1,64 @@
+<section class="header">
+	<h1>Items store</h1>
+	<input type="text" placeholder="Search" class="search-input" />
+	<button class="button button__add-item" (click)="addItem()">
+		Add item
+	</button>
+	<button class="button button__print" (click)="print()">Print</button>
+	<button class="button button__delete-selected" (click)="deleteSelected()">
+		<app-icon [icon]="Icons.trash"></app-icon>
+		Delete selected: {{ selected.size }}
+	</button>
+	<div class="switch">
+		<input
+			(change)="changeTheme()"
+			[(ngModel)]="isChecked"
+			type="checkbox"
+			id="toggle-theme"
+			class="toggle-input"
+		/>
+		<label for="toggle-theme" class="toggle-label"></label>
+	</div>
+</section>
+
+<section class="grid">
+	<div class="grid__header-item">
+		<input
+			type="checkbox"
+			[(ngModel)]="selectAllCheckbox"
+			(change)="selectAllItems()"
+		/>
+	</div>
+	<div class="grid__header-item">Foto</div>
+	<div class="grid__header-item">Label</div>
+	<div class="grid__header-item grid__header-item_status">Status</div>
+	<div class="grid__header-item">Description</div>
+	<div class="grid__header-item">Actions</div>
+	<app-item
+		*ngFor="let item of items"
+		[item]="item"
+		[ngClass]="{
+			'grid__header-item_inactive': item.status === Statuses.inactive
+		}"
+		(isChecked)="checkItem($event, item.id)"
+		(killMe)="deleteById(item.id)"
+	></app-item>
+	<div class="empty-item">
+		<!-- при появлении элементов app-item уберите эту заглушку с помощью чистого css -->
+		Empty list
+	</div>
+</section>
+
+<div class="burger-menu">
+	<input type="checkbox" checked="checked" id="toggle" />
+	<label for="toggle" class="burger-icon">&#9776;</label>
+	<ul class="menu">
+		<li><a (click)="addItem()" href="#">Add item</a></li>
+		<li><a (click)="print()" href="#">Print</a></li>
+		<li>
+			<a (click)="deleteSelected()" href="#"
+				>Delete selected: {{ selected.size }}</a
+			>
+		</li>
+	</ul>
+</div>

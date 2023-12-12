@@ -1,0 +1,74 @@
+@import "src/assets/scss/mixins/mobile";
+@import "src/assets/scss/mixins/print";
+
+:host {
+	display: contents;
+}
+
+img {
+	max-width: 5rem;
+	max-height: 5rem;
+}
+
+.item {
+	&__delete-block {
+		color: red;
+		cursor: pointer;
+	}
+}
+
+@include mobile {
+	.item-first {
+		grid-area: first-el;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.item-second {
+		grid-area: second-el;
+	}
+
+	.item-third {
+		grid-area: third-el;
+	}
+
+	.item-fourth {
+		grid-area: fourth-el;
+	}
+
+	.item-fifth {
+		grid-area: fifth-el;
+	}
+
+	.item__delete-block {
+		grid-area: delete-block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	:host {
+		display: grid;
+		grid-template-areas:
+			"first-el third-el"
+			"second-el fourth-el"
+			"delete-block fifth-el";
+	}
+}
+
+@include print {
+	[type="checkbox"] {
+		display: none;
+	}
+
+	.item-fourth,
+	.item__delete-block_icon {
+		display: none;
+	}
+
+	.item-second,
+	.item-third {
+		display: inline-block;
+	}
+}

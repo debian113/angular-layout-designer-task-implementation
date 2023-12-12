@@ -1,0 +1,47 @@
+<div
+	[@bounceInDown]=""
+	[@bounceOutUp]="isDestroyed"
+	class="grid__body-item item-first"
+>
+	<input type="checkbox" [formControl]="checkbox" />
+</div>
+<div
+	[@bounceInDown]=""
+	[@bounceOutUp]="isDestroyed"
+	class="grid__body-item item-second"
+>
+	<img [src]="item.foto" />
+</div>
+<div
+	[@bounceInDown]=""
+	[@bounceOutUp]="isDestroyed"
+	class="grid__body-item item-third"
+>
+	{{ item.label }}
+</div>
+<div
+	[@bounceInDown]=""
+	[@bounceOutUp]="isDestroyed"
+	class="grid__body-item item-fourth"
+>
+	{{ item.status }}
+</div>
+<div
+	[@bounceInDown]=""
+	[@bounceOutUp]="isDestroyed"
+	class="grid__body-item item-fifth"
+>
+	<app-read-more [currentText]="item.description"> </app-read-more>
+</div>
+<div
+	[@bounceInDown]=""
+	[@bounceOutUp]="isDestroyed"
+	class="grid__body-item item__delete-block"
+>
+	<app-icon
+		class="item__delete-block_icon"
+		(click)="destroyCurrentItem()"
+		[icon]="Icons.trash"
+	>
+	</app-icon>
+</div>
