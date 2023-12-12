@@ -8,7 +8,8 @@
 		Delete selected: {{ selected.size }}
 	</button>
 	<div class="switch">
-		<input (change)="changeTheme($event)" type="checkbox" id="toggle-theme" class="toggle-input">
+		<input (change)="changeTheme($event)" [(ngModel)]="isChecked"
+			   type="checkbox" id="toggle-theme" class="toggle-input">
 		<label for="toggle-theme" class="toggle-label"></label>
 	</div>
 </section>

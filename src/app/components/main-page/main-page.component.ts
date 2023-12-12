@@ -55,15 +55,20 @@ export class MainPageComponent {
 	constructor(@Inject(DOCUMENT) private document: Document) {
 	}
 
+	private changeThemeToBlackInTheEvening (): void {
+		setInterval(() => {
+			this.isChecked = true;
+			this.changeTheme();
+		}, 1800000);
+	}
 
-	public changeTheme(value: any): void {
+
+	public changeTheme(): void {
 		if (this.isChecked) {
-			document.body.removeAttribute('dark');
-		} else {
 			document.body.setAttribute('dark', '');
+		} else {
+			document.body.removeAttribute('dark');
 		}
-
-		this.isChecked = !this.isChecked;
 	}
 
 	public addItem(): void {
