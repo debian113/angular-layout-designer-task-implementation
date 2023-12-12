@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "src/assets/scss/mixins/mobile";
-@import "src/assets/scss/mixins/dark-theme";
+@import 'src/assets/scss/mixins/variables';
 
 html {
 	font-size: 16px;
@@ -9,6 +9,7 @@ html {
 body {
 	font-family: sans-serif;
 	padding: 2rem;
+	background-color: var(--background-color);
 }
 
 .grid {
@@ -22,21 +23,17 @@ body {
 	}
 
 	app-item {
-		&:hover {
-			div {
-				background-color: #121910 !important;
+		&:hover div {
+				background-color: #E0E0E0 !important;
 				color: white !important;
-			}
-		}
+			   }
+
 	}
 
 	app-item:nth-child(even) {
 		.grid__body-item {
 			background: #f6f6f6;
 			border-bottom: 2px solid #f6f6f6;
-		}
-
-		&:hover {
 		}
 	}
 
@@ -49,21 +46,6 @@ body {
 	@include mobile {
 		&__header-item {
 			display: none;
-		}
-	}
-}
-
-@include dark-theme {
-	background-color: #777;
-
-	.button:after {
-		background-color: #777 !important;
-	}
-
-	.search-input {
-		background-color: #777;
-		&::placeholder {
-			color: black;
 		}
 	}
 }

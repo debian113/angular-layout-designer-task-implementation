@@ -1,6 +1,6 @@
 @import "src/assets/scss/mixins/mobile";
 @import "src/assets/scss/mixins/print";
-@import "src/assets/scss/mixins/dark-theme";
+@import 'src/assets/scss/mixins/variables';
 
 .header {
 	display: flex;
@@ -105,7 +105,7 @@
 		position: absolute;
 		width: 100%;
 		height: 100%;
-		background: white;
+		background: var(--button-color);
 		left: 0;
 		top: 0;
 		border-radius: 10px;
@@ -130,6 +130,10 @@
 	border: 1px solid #ccc;
 	padding: 5px;
 	border-radius: 5px;
+	background-color: var(--search-input-color);
+	&::placeholder {
+		color: var(--placeholder-color);
+	}
 }
 
 .burger-menu {

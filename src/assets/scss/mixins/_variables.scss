@@ -1,0 +1,13 @@
+:root {
+	--background-color: #ffffff;
+	--button-color: #ffffff;
+	--search-input-color: #ffffff;
+	--placeholder-color: #6B6B6B;
+
+	[dark] {
+		--background-color: #616161;
+		--button-color: #616161;
+		--search-input-color: #616161;
+		--placeholder-color: black;
+	}
+}
