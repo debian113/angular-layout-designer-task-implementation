@@ -64,7 +64,7 @@ export class ReadMoreComponent implements OnChanges, AfterViewInit {
 
 		this.cd.detectChanges();
 	}
-	
+
 	private applyEllipsis(): void {
 		const element = this.elementRef?.nativeElement;
 
