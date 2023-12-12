@@ -22,10 +22,24 @@ body {
 		padding: 1em;
 	}
 
+	app-item {
+		&:hover{
+			div {
+				background-color: #121910 !important;
+				color: white !important;
+			}
+		}
+
+	}
+
 	app-item:nth-child(even) {
 		.grid__body-item {
 			background: #F6F6F6;
 			border-bottom:2px solid #F6F6F6;
+		}
+
+		&:hover{
+
 		}
 	}
 
