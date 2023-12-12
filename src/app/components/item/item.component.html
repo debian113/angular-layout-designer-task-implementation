@@ -26,6 +26,6 @@
 <div   [@bounceInDown]=""
 	   [@bounceOutUp]="isDestroyed"
 	   class="grid__body-item item__delete-block">
-	<app-icon (click)="destroyCurrentItem();" [icon]="Icons.trash">
+	<app-icon class="item__delete-block_icon" (click)="destroyCurrentItem();" [icon]="Icons.trash">
 	</app-icon>
 </div>

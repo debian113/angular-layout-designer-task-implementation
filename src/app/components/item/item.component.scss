@@ -1,4 +1,5 @@
 @import "src/assets/scss/mixins/mobile";
+@import "src/assets/scss/mixins/print";
 
 :host {
 	display: contents;
@@ -53,5 +54,19 @@ img {
 		"first-el third-el"
 		"second-el fourth-el"
 		"delete-block fifth-el"
+	}
+}
+
+@include print {
+	[type="checkbox"] {
+		display: none;
+	}
+
+	.item-fourth , .item__delete-block_icon{
+		display: none;
+	}
+
+	.item-second, .item-third {
+		display: inline-block;
 	}
 }

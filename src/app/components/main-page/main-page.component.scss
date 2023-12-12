@@ -1,4 +1,6 @@
 @import "src/assets/scss/mixins/mobile";
+@import "src/assets/scss/mixins/print";
+
 
 .header {
 	display: flex;
@@ -190,6 +192,38 @@
 		background-color: #333;
 		width: 100%;
 	}
+}
+
+@page {
+	size: letter ;
+}
+
+@include print {
+	.grid {
+		grid-template-columns:
+		minmax(18px, 4%)
+		minmax(5rem, 6%)
+		minmax(176px, 15%)
+		minmax(364px, 56%)
+		minmax(30px, 8%);
+	}
+
+
+	.search-input,
+	.button__add-item,
+	.button__print,
+	.button__delete-selected{
+		display: none;
+	}
+
+	[type="checkbox"] {
+		display: none;
+	}
+
+	.grid__header-item_status {
+		display: none;
+	}
+
 }
 
 
