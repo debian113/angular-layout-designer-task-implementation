@@ -1,6 +1,6 @@
 @import "src/assets/scss/mixins/mobile";
 @import "src/assets/scss/mixins/print";
-
+@import "src/assets/scss/mixins/dark-theme";
 
 .header {
 	display: flex;
@@ -192,7 +192,55 @@
 		background-color: #333;
 		width: 100%;
 	}
+
+	.search-input {
+		width: 6rem;
+	}
 }
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+.toggle-input {
+	display: none;
+}
+
+.toggle-label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	border-radius: 34px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.toggle-label:before {
+	position: absolute;
+	content: '';
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	border-radius: 50%;
+	transition: transform 0.3s;
+}
+
+.toggle-input:checked + .toggle-label {
+	background-color: #66bb6a; /* Цвет фона при включенном состоянии */
+}
+
+.toggle-input:checked + .toggle-label:before {
+	transform: translateX(26px);
+}
+
 
 @page {
 	size: letter ;
@@ -223,7 +271,4 @@
 	.grid__header-item_status {
 		display: none;
 	}
-
 }
-
-

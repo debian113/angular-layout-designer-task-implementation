@@ -1,9 +1,17 @@
-import {ChangeDetectionStrategy, Component, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	Inject,
+	QueryList,
+	ViewChildren,
+	ViewEncapsulation
+} from '@angular/core';
 import { LoremIpsum } from 'lorem-ipsum';
 import { Item } from '../../models/item.model';
 import { Statuses } from '../../consts/statuses.enum';
 import { Icons } from '../../consts/icons.enum';
-import { NgClass, NgForOf } from "@angular/common";
+import {DOCUMENT, NgClass, NgForOf} from "@angular/common";
 import { ItemComponent } from "../item/item.component";
 import { FormsModule } from "@angular/forms";
 import { IconComponent } from "../icon/icon.component";
@@ -41,6 +49,22 @@ export class MainPageComponent {
 			min: 1,
 		},
 	});
+
+	public isChecked = false;
+
+	constructor(@Inject(DOCUMENT) private document: Document) {
+	}
+
+
+	public changeTheme(value: any): void {
+		if (this.isChecked) {
+			document.body.removeAttribute('dark');
+		} else {
+			document.body.setAttribute('dark', '');
+		}
+
+		this.isChecked = !this.isChecked;
+	}
 
 	public addItem(): void {
 		const item: Item = {

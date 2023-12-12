@@ -7,6 +7,10 @@
 		<app-icon [icon]="Icons.trash"></app-icon>
 		Delete selected: {{ selected.size }}
 	</button>
+	<div class="switch">
+		<input (change)="changeTheme($event)" type="checkbox" id="toggle-theme" class="toggle-input">
+		<label for="toggle-theme" class="toggle-label"></label>
+	</div>
 </section>
 
 <section class="grid">
