@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "src/assets/scss/mixins/mobile";
-@import 'src/assets/scss/mixins/variables';
+@import "src/assets/scss/mixins/variables";
 
 html {
 	font-size: 16px;
@@ -24,10 +24,9 @@ body {
 
 	app-item {
 		&:hover div {
-				background-color: #E0E0E0 !important;
-				color: white !important;
-			   }
-
+			background-color: #e0e0e0 !important;
+			color: white !important;
+		}
 	}
 
 	app-item:nth-child(even) {
