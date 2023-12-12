@@ -18,7 +18,7 @@ img {
 }
 
 @include mobile {
-	.item-first{
+	.item-first {
 		grid-area: first-el;
 		display: flex;
 		align-items: center;
@@ -51,9 +51,9 @@ img {
 	:host {
 		display: grid;
 		grid-template-areas:
-		"first-el third-el"
-		"second-el fourth-el"
-		"delete-block fifth-el"
+			"first-el third-el"
+			"second-el fourth-el"
+			"delete-block fifth-el";
 	}
 }
 
@@ -62,11 +62,13 @@ img {
 		display: none;
 	}
 
-	.item-fourth , .item__delete-block_icon{
+	.item-fourth,
+	.item__delete-block_icon {
 		display: none;
 	}
 
-	.item-second, .item-third {
+	.item-second,
+	.item-third {
 		display: inline-block;
 	}
 }

@@ -1,7 +1,9 @@
-<div #text class="read-more__text" [innerHTML]="currentText">
-</div>
+<div #text class="read-more__text" [innerHTML]="currentText"></div>
 
-<a *ngIf="isTextTruncated" class="read-more__link"
-   [class.hidden]="hideToggle"
-   (click)="toggleView()">Read {{isCollapsed? 'more':'less'}}
+<a
+	*ngIf="isTextTruncated"
+	class="read-more__link"
+	[class.hidden]="hideToggle"
+	(click)="toggleView()"
+	>Read {{ isCollapsed ? "more" : "less" }}
 </a>

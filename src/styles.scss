@@ -2,7 +2,6 @@
 @import "src/assets/scss/mixins/mobile";
 @import "src/assets/scss/mixins/dark-theme";
 
-
 html {
 	font-size: 16px;
 }
@@ -15,36 +14,34 @@ body {
 .grid {
 	&__header-item {
 		padding: 1em;
-	    border-bottom:2px solid #F6F6F6;
-   }
+		border-bottom: 2px solid #f6f6f6;
+	}
 
 	&__body-item {
 		padding: 1em;
 	}
 
 	app-item {
-		&:hover{
+		&:hover {
 			div {
 				background-color: #121910 !important;
 				color: white !important;
 			}
 		}
-
 	}
 
 	app-item:nth-child(even) {
 		.grid__body-item {
-			background: #F6F6F6;
-			border-bottom:2px solid #F6F6F6;
+			background: #f6f6f6;
+			border-bottom: 2px solid #f6f6f6;
 		}
 
-		&:hover{
-
+		&:hover {
 		}
 	}
 
 	&__header-item_inactive {
-		.grid__body-item  {
+		.grid__body-item {
 			filter: grayscale(70%);
 		}
 	}
@@ -56,19 +53,17 @@ body {
 	}
 }
 
-
 @include dark-theme {
 	background-color: #777;
 
-	.button:after  {
+	.button:after {
 		background-color: #777 !important;
 	}
 
 	.search-input {
-		background-color: #777 ;
+		background-color: #777;
 		&::placeholder {
 			color: black;
 		}
 	}
 }
-

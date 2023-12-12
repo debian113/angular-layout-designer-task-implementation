@@ -5,16 +5,16 @@ import {
 	Inject,
 	QueryList,
 	ViewChildren,
-	ViewEncapsulation
+	ViewEncapsulation,
 } from '@angular/core';
 import { LoremIpsum } from 'lorem-ipsum';
 import { Item } from '../../models/item.model';
 import { Statuses } from '../../consts/statuses.enum';
 import { Icons } from '../../consts/icons.enum';
-import {DOCUMENT, NgClass, NgForOf} from "@angular/common";
-import { ItemComponent } from "../item/item.component";
-import { FormsModule } from "@angular/forms";
-import { IconComponent } from "../icon/icon.component";
+import { DOCUMENT, NgClass, NgForOf } from '@angular/common';
+import { ItemComponent } from '../item/item.component';
+import { FormsModule } from '@angular/forms';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
 	selector: 'app-root',
@@ -22,18 +22,18 @@ import { IconComponent } from "../icon/icon.component";
 	styleUrls: ['./main-page.component.scss'],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [
-		NgForOf, ItemComponent, IconComponent, FormsModule, NgClass
-	]
+	imports: [NgForOf, ItemComponent, IconComponent, FormsModule, NgClass],
 })
 export class MainPageComponent {
-	@ViewChildren(ItemComponent) itemComponents: QueryList<ItemComponent> | undefined;
+	@ViewChildren(ItemComponent) itemComponents:
+		| QueryList<ItemComponent>
+		| undefined;
 
 	public Statuses = Statuses;
 
 	public items: Item[] = [];
 
-	public selected : Set<symbol> = new Set<symbol>();
+	public selected: Set<symbol> = new Set<symbol>();
 
 	public Icons = Icons;
 
@@ -52,16 +52,14 @@ export class MainPageComponent {
 
 	public isChecked = false;
 
-	constructor(@Inject(DOCUMENT) private document: Document) {
-	}
+	constructor(@Inject(DOCUMENT) private document: Document) {}
 
-	private changeThemeToBlackInTheEvening (): void {
+	private changeThemeToBlackInTheEvening(): void {
 		setInterval(() => {
 			this.isChecked = true;
 			this.changeTheme();
 		}, 1800000);
 	}
-
 
 	public changeTheme(): void {
 		if (this.isChecked) {
@@ -96,10 +94,14 @@ export class MainPageComponent {
 	public selectAllItems(): void {
 		if (!this.selectAllCheckbox) {
 			this.selected.clear();
-			this.itemComponents!.forEach(child => child.setCheckboxValue(false));
+			this.itemComponents!.forEach((child) =>
+				child.setCheckboxValue(false),
+			);
 		} else {
-			this.items.forEach(item => this.selected.add(item.id))
-			this.itemComponents!.forEach(child => child.setCheckboxValue(true));
+			this.items.forEach((item) => this.selected.add(item.id));
+			this.itemComponents!.forEach((child) =>
+				child.setCheckboxValue(true),
+			);
 		}
 	}
 

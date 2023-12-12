@@ -1,21 +1,24 @@
 import {
 	AfterViewInit,
-	ChangeDetectionStrategy, ChangeDetectorRef,
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
 	Component,
 	ElementRef,
 	Input,
-	OnChanges, Renderer2, SimpleChanges,
-	ViewChild
+	OnChanges,
+	Renderer2,
+	SimpleChanges,
+	ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-read-more',
-  standalone: true,
-  imports: [CommonModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './read-more.component.html',
-  styleUrls: ['./read-more.component.scss']
+	selector: 'app-read-more',
+	standalone: true,
+	imports: [CommonModule],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	templateUrl: './read-more.component.html',
+	styleUrls: ['./read-more.component.scss'],
 })
 export class ReadMoreComponent implements OnChanges, AfterViewInit {
 	@ViewChild('text') elementRef: ElementRef | undefined;
@@ -28,8 +31,10 @@ export class ReadMoreComponent implements OnChanges, AfterViewInit {
 
 	public isCollapsed: boolean = true;
 
-	constructor(private renderer: Renderer2 , private cd: ChangeDetectorRef) {
-	}
+	constructor(
+		private renderer: Renderer2,
+		private cd: ChangeDetectorRef,
+	) {}
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['maxLength'] && changes['maxLength'].currentValue) {
@@ -41,7 +46,9 @@ export class ReadMoreComponent implements OnChanges, AfterViewInit {
 	ngAfterViewInit(): void {
 		this.applyEllipsis();
 
-		this.isTextTruncated =this.elementRef?.nativeElement.scrollHeight > this.elementRef?.nativeElement.clientHeight;
+		this.isTextTruncated =
+			this.elementRef?.nativeElement.scrollHeight >
+			this.elementRef?.nativeElement.clientHeight;
 
 		this.cd.detectChanges();
 	}
@@ -65,7 +72,11 @@ export class ReadMoreComponent implements OnChanges, AfterViewInit {
 			this.renderer.setStyle(element, '-webkit-box-orient', 'vertical');
 			this.renderer.setStyle(element, 'overflow', 'hidden');
 			this.renderer.setStyle(element, 'text-overflow', 'ellipsis');
-			this.renderer.setStyle(element, '-webkit-line-clamp', `${this.maxLines}`);
+			this.renderer.setStyle(
+				element,
+				'-webkit-line-clamp',
+				`${this.maxLines}`,
+			);
 		}
 	}
 

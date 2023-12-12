@@ -1,6 +1,11 @@
-import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	Input,
+	ViewEncapsulation,
+} from '@angular/core';
 import { Icons } from '../../consts/icons.enum';
-import { NgIf } from "@angular/common";
+import { NgIf } from '@angular/common';
 
 @Component({
 	selector: 'app-icon',
@@ -8,9 +13,7 @@ import { NgIf } from "@angular/common";
 	styleUrls: ['./icon.component.scss'],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [
-		NgIf
-	]
+	imports: [NgIf],
 })
 export class IconComponent {
 	@Input()
